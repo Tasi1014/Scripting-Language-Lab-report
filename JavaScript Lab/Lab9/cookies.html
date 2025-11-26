@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // i. Store a cookie named "theme" with value "dark"
+        document.cookie = "theme=dark;";
+
+           // ii. Read the cookie and display its value
+        function getCookie(name) {
+            let cookies = document.cookie.split("; ");
+            for (let c of cookies) {
+                let [key, value] = c.split("=");
+                if (key === name) return value;
+            }
+            return null;
+        }
+         console.log("Theme cookie value:", getCookie("theme"));
+
+        // iii. Delete the cookie after 5 seconds
+        setTimeout(() => {
+            document.cookie = "theme=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            console.log("Theme cookie deleted");
+        }, 5000);
+    </script>
+</body>
+</html>

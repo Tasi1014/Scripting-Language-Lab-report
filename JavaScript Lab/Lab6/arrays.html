@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Initial array of 5 integers
+        let numbers = [2, 5, 8, 12, 20];
+        console.log("Original Array:", numbers);
+
+        // i. Add/remove elements from beginning and end
+        numbers.push(25);   // add to end
+        console.log("After push (add end):", numbers);
+
+        numbers.pop();      // remove from end
+        console.log("After pop (remove end):", numbers);
+
+        numbers.unshift(1); // add to beginning
+        console.log("After unshift (add beginning):", numbers);
+
+        numbers.shift();    // remove from beginning
+        console.log("After shift (remove beginning):", numbers);
+
+        // ii. Use map() to create new array with squared values
+        let squared = numbers.map(function(num) {
+            return num * num;
+        });
+        console.log("Squared Array:", squared);
+
+        // iii. Filter numbers greater than 10
+        let filtered = numbers.filter(function(num) {
+            return num > 10;
+        });
+        console.log("Numbers greater than 10:", filtered);
+    </script>
+</body>
+</html>

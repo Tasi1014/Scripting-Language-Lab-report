@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<button id="slideDownBtn">Slide Down</button>
+<button id="slideUpBtn">Slide Up</button>
+<button id="toggleBtn">Toggle</button>
+
+<div id="panel" style="width:300px; height:100px; background:lightblue; display:none;">
+    Hello, this is a sliding panel.
+</div>
+
+<script>
+$(document).ready(function () {
+    $("#slideDownBtn").click(function () {
+        $("#panel").slideDown();
+    });
+
+    $("#slideUpBtn").click(function () {
+        $("#panel").slideUp();
+    });
+
+    $("#toggleBtn").click(function () {
+        $("#panel").slideToggle();
+    });
+});
+</script>
+
+</body>
+</html>

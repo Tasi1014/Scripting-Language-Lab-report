@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function greetUser() {
+            // i. Ask user for their name
+            let name = prompt("Enter your name:");
+
+            // ii. Display welcome message
+            alert("Welcome, " + name + "!");
+
+            // iii. Return the name
+            return name;
+        }
+
+        // Call the function
+        let userName = greetUser();
+        console.log("User entered: " + userName);
+    </script>
+</body>
+</html>

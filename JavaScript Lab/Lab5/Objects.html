@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+</head>
+<body>
+     <script>
+        // i. Define a Book object using object literal
+        let book1 = {
+            title: "JavaScript Basics",
+            author: "Tasi Sherpa",
+            year: 2024
+        };
+
+        console.log("Book 1:", book1);
+
+        // ii. Constructor function to create Book objects
+        function Book(title, author, year) {
+            this.title = title;
+            this.author = author;
+            this.year = year;
+        }
+
+        let book2 = new Book("Art of Football", "Lionel Messi", 2022);
+        console.log("Book 2:", book2);
+
+        // iii. Modify the year property of the first object
+        book1.year = 2025;
+        console.log("Updated Book 1:", book1);
+    </script>
+</body>
+</html>

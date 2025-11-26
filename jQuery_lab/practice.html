@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example 1</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <button id="btn">add list</button>
+    <ul id="list"></ul>
+
+    <script>
+         let count = 1;
+
+        $("#btn").on("click", function () {
+            $("#list").append(`<li>List ${count++}</li>`);
+        });
+        //$(parent).on(eventName, childSelector, handlerFunction) // only dblclick on li will trigger the
+        $(document).on("dblclick", "li", function () {
+            $(this).remove();
+        });
+
+        $(document).on("mouseenter", "li", function () {
+            $(this).css({
+                backgroundColor: "yellow",
+                color: "red",
+                fontSize: "20px"
+            });
+        });
+
+        $(document).on("mouseleave", "li", function () {
+            $(this).css({
+                backgroundColor: "",
+                color: "",
+                fontSize: ""
+            });
+        });
+    </script>
+</body>
+</html>

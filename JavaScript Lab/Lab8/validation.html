@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .red {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="form">
+      <label for="userName">Name: </label>
+      <input type="text" id="userName" /><br><br>
+      <label for="email">Email: </label>
+      <input type="text" id="email" /><br>
+      <p id="error1" class="red"></p>
+      <label for="pw">Password: </label>
+      <input type="password" id="pw" /><br>
+      <p id="error2" class="red"></p>
+      <button id="btn">Log in</button>
+      <p id="result"></p>
+    </form>
+
+    <script>
+      const e1 = document.getElementById("error1");
+      const e2 = document.getElementById("error2");
+
+      const form = document.getElementById("form");
+
+     form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = document.getElementById("email").value;  // fixed
+    const password = document.getElementById("pw").value;
+
+    let isFormValid = true;
+
+    if (email.trim() === "") {
+        e1.textContent = "Email Cannot be Empty";
+        isFormValid = false;
+    } else if (!email.includes('@')) {
+        e1.textContent = "Email should include @";
+        isFormValid = false;
+    } else {
+        e1.textContent = "";
+    }
+
+    if (password.trim() === "") {
+        e2.textContent = "Password Cannot be Empty";
+        isFormValid = false;
+    } else if (password.length < 8) {
+        e2.textContent = "Password should be at least 8 characters";
+        isFormValid = false;
+    } else {
+        e2.textContent = "";
+    }
+
+    const mssg = document.getElementById("result");
+    if (isFormValid) {
+        mssg.textContent = "Login Successful";
+    } else {
+        mssg.textContent = "Login Failed!";
+    }
+});
+
+    </script>
+  </body>
+</html>

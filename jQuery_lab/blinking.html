@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<p id="blink">This paragraph will blink.</p>
+<button id="blinkBtn">Start Blinking</button>
+
+<script>
+$(document).ready(function () {
+    $("#blinkBtn").click(function () {
+
+        // Disable the button
+        $(this).prop("disabled", true);
+
+        // Blinking effect
+        setInterval(function () {
+            $("#blink").fadeOut(500).fadeIn(500);
+        }, 1000);
+    });
+});
+</script>
+
+</body>
+</html>
