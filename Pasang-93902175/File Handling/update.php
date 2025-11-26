@@ -51,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_FILES['myfile'])) {
             if (mysqli_query($conn, $update_sql)) {
                 $success = "File updated successfully.";
                 $currentFile = $fileName; // update currentFile for display
+                header("Location: display_image.php");
             } else {
                 $error = "Error updating database: " . mysqli_error($conn);
             }

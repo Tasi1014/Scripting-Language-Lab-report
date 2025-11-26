@@ -36,7 +36,13 @@ if(isset($_FILES['myfile'])){
 
     // Upload file
     if(move_uploaded_file($fileTmp, $targetFile)){
-        echo "File uploaded successfully: " . $fileName;
+        $query = "INSERT INTO image (name) VALUES ('$fileName')";
+        $result = mysqli_query($conn, $query);
+        if($result){
+            echo "File uploaded successfully: " . $fileName;
+        } else {
+            echo "Error: Could not upload file.";
+        }
     } else {
         echo "Error: Could not upload file.";
     }
