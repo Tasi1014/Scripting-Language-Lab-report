@@ -21,7 +21,7 @@ $result = mysqli_query($conn, $sql);
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Password</th>
+            <th>Phone</th>
             <th>Delete</th>
             <th>Update</th>
         </tr>
@@ -30,7 +30,7 @@ $result = mysqli_query($conn, $sql);
                 <td><?= $count++ ?></td>
                 <td><?= $row['name'] ?></td>
                 <td><?= $row['email'] ?></td>
-                <td><?= $row['password'] ?></td>
+                <td><?= $row['phone'] ?></td>
                 <td><a href="delete.php?sid=<?= $row['id'] ?>">Delete</a></td>
                 <td><a href="update.php?sid=<?= $row['id'] ?>">Update</a></td>
             </tr>

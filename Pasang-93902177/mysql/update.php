@@ -22,31 +22,35 @@ if (mysqli_num_rows($result) == 0) {
 
 // Handle POST request
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    $name  = trim($_POST['name']);
+    $email = trim($_POST['email']);
+    $phone = trim($_POST['phone']);
 
     // Validate Name (3-15 alphabetic characters)
-    if (!empty($_POST['name']) && preg_match('/^[a-zA-Z ]{3,15}$/', trim($_POST['name']))) {
-        $name = trim($_POST['name']);
-    } else {
-        $errors['name'] = "Name must be 3-15 alphabetic characters.";
+   if (empty($name) || empty($email) || empty($phone)) {
+        $error['form'] = "All fields are required.";
     }
 
-    // Validate Email
-    if (!empty($_POST['email']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-        $email = trim($_POST['email']);
-    } else {
-        $errors['email'] = "Enter a valid email address.";
+    // Name validation
+    if (!preg_match('/^[a-zA-Z ]{3,30}$/', $name)) {
+        $error['name'] = "Name must be 3–30 alphabetic characters.";
     }
-    // Validate Password (min 8 chars, at least 1 uppercase, 1 special character)
-    if (!empty($_POST['password']) && preg_match('/^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=\[\]{};:"\\|,.<>\/?]).{8,}$/', $_POST['password'])) {
-        $password = trim($_POST['password']);
-    } else {
-        $errors['password'] = "Password must be at least 8 characters, include 1 uppercase & 1 special character.";
+
+    // Email validation
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error['email'] = "Invalid email format.";
     }
+
+    // Phone validation
+    if (!preg_match('/^\d{10}$/', $phone)) {
+        $error['phone'] = "Phone must be exactly 10 digits.";
+    }
+
 
     // If no errors, update the record
     if (empty($errors)) {
         $update_sql = "UPDATE students 
-                       SET name='$name', email='$email', password='$password'
+                       SET name='$name', email='$email', phone='$phone'
                        WHERE id='$id'";
         if (mysqli_query($conn, $update_sql)) {
             header("Location: read.php"); // Redirect after successful update
@@ -86,8 +90,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <span class="error"><?= $errors['email'] ?? '' ?></span>
 
     <label>Password:</label>
-    <input type="password" name="password" value="<?= htmlspecialchars($_POST['password'] ?? $records['password']) ?>">
-    <span class="error"><?= $errors['password'] ?? '' ?></span>
+    <input type="number" name="phone" value="<?= htmlspecialchars($_POST['phone'] ?? $records['phone']) ?>">
+    <span class="error"><?= $errors['phone'] ?? '' ?></span>
 
     <button type="submit">Update</button>
 
