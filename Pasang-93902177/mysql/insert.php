@@ -62,17 +62,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <form action="" method="POST">
 
     <label>Name:</label>
-    <input type="text" name="name" value="<?= htmlspecialchars($name) ?>">
+    <input type="text" name="name" value="<?= htmlspecialchars($name) ?>"><br><br>
     <p style="color:red;"><?= $error['name'] ?? '' ?></p>
     <br>
-
     <label>Email:</label>
     <input type="email" name="email" value="<?= htmlspecialchars($email) ?>">
     <p style="color:red;"><?= $error['email'] ?? '' ?></p>
     <br>
 
     <label>Phone:</label>
-    <input type="text" name="phone" value="<?= htmlspecialchars($phone) ?>">
+    <input type="number" name="phone" value="<?= htmlspecialchars($phone) ?>">
     <p style="color:red;"><?= $error['phone'] ?? '' ?></p>
     <br>
 

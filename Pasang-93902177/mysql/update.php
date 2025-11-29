@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <input type="text" name="email" value="<?= htmlspecialchars($_POST['email'] ?? $records['email']) ?>">
     <span class="error"><?= $errors['email'] ?? '' ?></span>
 
-    <label>Password:</label>
+    <label>Phone:</label>
     <input type="number" name="phone" value="<?= htmlspecialchars($_POST['phone'] ?? $records['phone']) ?>">
     <span class="error"><?= $errors['phone'] ?? '' ?></span>
 
