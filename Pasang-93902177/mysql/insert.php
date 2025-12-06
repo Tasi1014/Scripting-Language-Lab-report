@@ -3,8 +3,6 @@ include 'connection.php';
 
 $name = $email = $phone = "";
 $error = [];
-$success = "";
-
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $name  = trim($_POST['name']);
@@ -34,9 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // If no errors → insert
     if (empty($error)) {
         $sql = "INSERT INTO students (name, email, phone) VALUES ('$name', '$email', '$phone')";
-        
-        if ($conn->query($sql) === TRUE) {
-            $success = "Record inserted successfully.";
+        $result = mysqli_query($conn, $sql);
+        if ($result) {
+            $error["form"] = "Record inserted successfully.";
         } else {
             $error['form'] = "Database Error: " . $conn->error;
         }
@@ -52,31 +50,24 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <body>
 
 <h2>Insert Student Record</h2>
-
-<!-- Success Message -->
-<?php if ($success): ?>
-    <p style="color:green;"><?= $success ?></p>
-<?php endif; ?>
-
 <!-- Form -->
-<form action="" method="POST">
+<form method="POST">
 
     <label>Name:</label>
-    <input type="text" name="name" value="<?= htmlspecialchars($name) ?>"><br><br>
+    <input type="text" name="name" value="<?= $name ?>"><br>
     <p style="color:red;"><?= $error['name'] ?? '' ?></p>
-    <br>
     <label>Email:</label>
-    <input type="email" name="email" value="<?= htmlspecialchars($email) ?>">
+    <input type="email" name="email" value="<?= $email ?>">
     <p style="color:red;"><?= $error['email'] ?? '' ?></p>
     <br>
 
     <label>Phone:</label>
-    <input type="number" name="phone" value="<?= htmlspecialchars($phone) ?>">
+    <input type="number" name="phone" value="<?= $phone ?>">
     <p style="color:red;"><?= $error['phone'] ?? '' ?></p>
     <br>
 
     <button type="submit">Insert</button>
-    <p style="color:red;"><?= $error['form'] ?? '' ?></p>
+    <p><?= $error['form'] ?? '' ?></p>
 
 </form>
 
