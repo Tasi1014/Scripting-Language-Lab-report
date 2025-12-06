@@ -2,7 +2,7 @@
 include 'connection.php';
 
 $sql = "SELECT * FROM students";
-$result = mysqli_query($conn, $sql);
+$result = mysqli_query($conn, query: $sql);
 ?>
 
 <!DOCTYPE html>
@@ -22,8 +22,6 @@ $result = mysqli_query($conn, $sql);
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
-            <th>Delete</th>
-            <th>Update</th>
         </tr>
         <?php $count = 1; while($row = mysqli_fetch_assoc($result)): ?>
             <tr>
@@ -31,8 +29,6 @@ $result = mysqli_query($conn, $sql);
                 <td><?= $row['name'] ?></td>
                 <td><?= $row['email'] ?></td>
                 <td><?= $row['phone'] ?></td>
-                <td><a href="delete.php?sid=<?= $row['id'] ?>">Delete</a></td>
-                <td><a href="update.php?sid=<?= $row['id'] ?>">Update</a></td>
             </tr>
         <?php endwhile; ?>
     </table>
